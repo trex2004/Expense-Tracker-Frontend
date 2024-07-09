@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Form, Input, message } from 'antd'
 import axios from 'axios' 
 import Spinner from '../components/layout/Spinner.js'
+import bgnd from '../one.jpg'
 
 const RegisterPage = () => {
 
@@ -34,24 +35,31 @@ const RegisterPage = () => {
 
     return(
         <>
-            <div className='register-page d-flex align-items-center justify-content-center'>
+            <div className='register-page d-flex flex-column  align-items-center justify-content-center bg-light'>
                 {loading && <Spinner/>}
-                <Form layout='vertical' onFinish={submitHandler} style={{ width: 500 }} >
-                    <h1>Register From</h1>
-                    <Form.Item label="Email" name="email" rules={[{required:true, message:'Please Enter your Email!!'}]}>
-                        <Input type='email'/>
-                    </Form.Item>
-                    <Form.Item label="Username" name="name" rules={[{ required: true, message: 'Please Enter your Username!!' }]}>
-                        <Input />
-                    </Form.Item>
-                    <Form.Item label="Password" name="password" rules={[{ required: true, message: 'Please Enter your Password!' }]}>
-                        <Input.Password />
-                    </Form.Item>
-                    <div className='d-flex justify-content-between align-content-center  '>
-                        <Link to='/login' className='align-content-center'>Registered? Click Here</Link>
-                        <button className='btn btn-primary'>Register</button>
+                <div className='shadow-lg '>
+                    <div>
+                        <img src={bgnd} className='register-img rounded-top-3' alt="Background"/>
                     </div>
-                </Form>
+                    <div className='bg-white px-3 py-2'>
+                        <Form className='register-form' layout='vertical' onFinish={submitHandler} style={{ width: 430 }} >
+                            <h2 className='register-heading py-2'>Register Form</h2>
+                            <Form.Item label="Email" name="email" rules={[{required:true, message:'Please Enter your Email!!'}]}>
+                                <Input type='email'/>
+                            </Form.Item>
+                            <Form.Item label="Username" name="name" rules={[{ required: true, message: 'Please Enter your Username!!' }]}>
+                                <Input />
+                            </Form.Item>
+                            <Form.Item label="Password" name="password" rules={[{ required: true, message: 'Please Enter your Password!' }]}>
+                                <Input.Password />
+                            </Form.Item>
+                            <div className='d-flex justify-content-between align-content-center '>
+                                <span>Registered? <Link to='/login' className='align-content-center'>Click Here</Link></span>
+                                <button className='btn btn-primary'>Register</button>
+                            </div>
+                        </Form>
+                    </div>
+                </div>
             </div>
         </>
     )

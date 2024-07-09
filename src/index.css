@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap');
 * {
   padding: 0;
   margin: 0;
@@ -13,7 +14,24 @@
 }
 
 .register-page {
-  height: 90vh !important;
+  height: 100vh !important;
+}
+
+.ant-form-item-label label , .register-form{
+  font-family: "Lato";
+  font-weight: 300;
+  font-style: normal;
+}
+
+.register-heading{
+  font-family: "Lato";
+  font-weight: 400;
+  font-style: normal;
+}
+
+.register-img{
+  height: 250px;
+  width: 470px;
 }
 
 /*transaction page*/

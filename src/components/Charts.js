@@ -25,11 +25,11 @@ const Charts = ({ transactions }) => {
 
     const data = [{ x: "Credit", y: totalCreditAmount, fill: "green" }, { x: "Debit", y: totalDebitAmount, fill: "red" }]
     const creditData = categories.map((categorie) => {
-        const amount = transactions.filter((oneTransaction) => oneTransaction.type==='credit' && oneTransaction.category==categorie).reduce((acc,oneTransaction)=>acc+oneTransaction.amount,0)
+        const amount = transactions.filter((oneTransaction) => oneTransaction.type==='credit' && oneTransaction.category===categorie).reduce((acc,oneTransaction)=>acc+oneTransaction.amount,0)
         return({x:categorie,y:amount})
     })
     const debitData = categories.map((categorie) => {
-        const amount = transactions.filter((oneTransaction) => oneTransaction.type==='debit' && oneTransaction.category==categorie).reduce((acc,oneTransaction)=>acc+oneTransaction.amount,0)
+        const amount = transactions.filter((oneTransaction) => oneTransaction.type==='debit' && oneTransaction.category===categorie).reduce((acc,oneTransaction)=>acc+oneTransaction.amount,0)
         return({x:categorie,y:amount})
     })
     const creditDatax = creditData.filter((oneTransaction) => oneTransaction.y>0)
@@ -77,14 +77,14 @@ const Charts = ({ transactions }) => {
                     <div className='card'>
                         <div className='card-header'>
                             <ul className="nav nav-pills card-header-pills">
-                                <li className="nav-item  pie-header">
-                                    <a className="nav-link" onClick={() => setDataType('type')}>By Type</a>
+                                <li className="nav-item  pie-header"> 
+                                    <a className="nav-link" href='/#' onClick={() => setDataType('type')}>By Type</a>
                                 </li>
                                 <li className="nav-item  pie-header">
-                                    <a className="nav-link" onClick={() => setDataType('credit-categories')}>By Credit Categories</a>
+                                    <a className="nav-link" href='/#' onClick={() => setDataType('credit-categories')}>By Credit Categories</a>
                                 </li>
                                 <li className="nav-item  pie-header">
-                                    <a className="nav-link" onClick={() => setDataType('debit-categories')}>By Debit Categories</a>
+                                    <a className="nav-link" href='/#' onClick={() => setDataType('debit-categories')}>By Debit Categories</a>
                                 </li>
                             </ul>
                         </div>
