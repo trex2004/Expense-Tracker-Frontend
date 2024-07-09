@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { DatePicker, Form, Input, message, Modal, Select, Table } from 'antd';
 import axios from 'axios'
-import { AreaChartOutlined, DeleteOutlined, EditOutlined, UnorderedListOutlined } from '@ant-design/icons'
+import { AreaChartOutlined, DeleteTwoTone, EditOutlined, UnorderedListOutlined } from '@ant-design/icons'
 import Layout from './../components/layout/Layout.js'
-import Spinner from '../components/layout/Spinner.js'
 import moment from 'moment';
 import Charts from '../components/Charts.js';
 const { RangePicker } = DatePicker
@@ -39,7 +38,8 @@ const HomePage = () => {
         getAllTransactions()
     }, [frequency, selectedDate, selectedType,edit,reload])
 
-
+    //just cause
+    if(loading){}
     //table setup
     // const dataSource = [transactions]
     const collumns = [
@@ -72,7 +72,7 @@ const HomePage = () => {
                         setEdit(record)
                         setShowmodal(true)
                     }}/>
-                    <DeleteOutlined className='mx-2' onClick={() => deleteHandler(record)}/>
+                    <DeleteTwoTone twoToneColor="#FF0000" className='mx-2' onClick={() => deleteHandler(record)}/>
                 </div>
             )
         }
@@ -116,36 +116,40 @@ const HomePage = () => {
 
     return (
         <Layout>
-            {loading && <Spinner />}
-            <div className='filters'>
-                <div>
-                    <h6>Select Frequency</h6>
-                    <Select value={frequency} onChange={(values) => { setFrequency(values) }}>
-                        <Select.Option value="7">Last 1 Week</Select.Option>
-                        <Select.Option value="30">Last 1 Month</Select.Option>
-                        <Select.Option value="365">Last 1 Year</Select.Option>
-                        <Select.Option value="custom">Custom</Select.Option>
-                    </Select>
-                    {frequency === 'custom' && <RangePicker value={selectedDate} onChange={(values) => { setSelectedDate(values) }} />}
+            {/* {loading && <Spinner />} */}
+            <div className='d-flex mx-5 flex-column lato'>
+                <div className=' mt-2'>
+                    <div className='filters border mb-1 rounded-2'>
+                        <div>
+                            <h6>Select Frequency</h6>
+                            <Select dropdownStyle={{ backgroundColor: '#D8EFD3' }} value={frequency} onChange={(values) => { setFrequency(values) }}>
+                                <Select.Option value="7">Last 1 Week</Select.Option>
+                                <Select.Option value="30">Last 1 Month</Select.Option>
+                                <Select.Option value="365">Last 1 Year</Select.Option>
+                                <Select.Option value="custom">Custom</Select.Option>
+                            </Select>
+                            {frequency === 'custom' && <RangePicker value={selectedDate} onChange={(values) => { setSelectedDate(values) }} />}
+                        </div>
+                        <div>
+                            <h6>Select Type</h6>
+                            <Select dropdownStyle={{ backgroundColor: '#D8EFD3' }} style={{ width: 80 }} value={selectedType} onChange={(values) => { setSelectedType(values) }}>
+                                <Select.Option value="all">All</Select.Option>
+                                <Select.Option value="credit">Credit</Select.Option>
+                                <Select.Option value="debit">Debit</Select.Option>
+                            </Select>
+                        </div>
+                        <div className='p-10 border border-secondary rounded icon-div'>
+                            <UnorderedListOutlined className={`mx-2 ${viewData === 'table' ? 'active-icon' : 'inactive-icon'}`} onClick={() => setViewData('table')} />
+                            <AreaChartOutlined className={`mx-2 ${viewData === 'chart' ? 'active-icon' : 'inactive-icon'}`} onClick={() => setViewData('chart')} />
+                        </div>
+                        <div>
+                            <button className='btn btn-primary' onClick={() => setShowmodal(true)}>Add new transaction</button>
+                        </div>
+                    </div>
+                    <div className='content'>
+                        {viewData === 'table' ? <Table  columns={collumns} dataSource={transactions} /> : <Charts transactions={transactions} />}
+                    </div>
                 </div>
-                <div>
-                    <h6>Select Type</h6>
-                    <Select value={selectedType} onChange={(values) => { setSelectedType(values) }}>
-                        <Select.Option value="all">All</Select.Option>
-                        <Select.Option value="credit">Credit</Select.Option>
-                        <Select.Option value="debit">Debit</Select.Option>
-                    </Select>
-                </div>
-                <div className='p-10 border border-secondary rounded icon-div'>
-                    <UnorderedListOutlined className={`mx-2 ${viewData === 'table' ? 'active-icon' : 'inactive-icon'}`} onClick={() => setViewData('table')} />
-                    <AreaChartOutlined className={`mx-2 ${viewData === 'chart' ? 'active-icon' : 'inactive-icon'}`} onClick={() => setViewData('chart')} />
-                </div>
-                <div>
-                    <button className='btn btn-primary' onClick={() => setShowmodal(true)}>Add new transaction</button>
-                </div>
-            </div>
-            <div className='content'>
-                {viewData === 'table' ? <Table columns={collumns} dataSource={transactions} /> : <Charts transactions={transactions} />}
             </div>
             <Modal title={edit? "Edit Transaction":"Add transaction"} open={showModal} onCancel={() => setShowmodal(false)} afterClose={() => setEdit(null)} destroyOnClose={true} footer={false}>
                 <Form layout='vertical' onFinish={submitHandler} initialValues={edit} >
