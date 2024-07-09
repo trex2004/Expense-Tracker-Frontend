@@ -15,7 +15,7 @@ const LoginPage = () => {
     const submitHandler = async (values) => {
         try {
             setLoading(true)
-            const {data} = await axios.post('https://expense-management-backend-lemon.vercel.app/',values)
+            const {data} = await axios.post('https://expense-management-backend-lemon.vercel.app/api/v1/users/login',values)
             message.success('Login successful')
             setLoading(false)
             localStorage.setItem('user',JSON.stringify({...data.user,password:''}))
