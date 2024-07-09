@@ -25,7 +25,7 @@ const HomePage = () => {
             try {
                 const user = JSON.parse(localStorage.getItem('user'))
                 setLoading(true)
-                const res = await axios.post('/transactions/get-transactions', { userId: user._id, frequency, selectedDate, selectedType })
+                const res = await axios.post('/api/v1/transactions/get-transactions', { userId: user._id, frequency, selectedDate, selectedType })
                 setLoading(false)
                 setTransactions(res.data)
                 // console.log(res.data)
@@ -84,11 +84,11 @@ const HomePage = () => {
             const user = JSON.parse(localStorage.getItem('user'))
             setLoading(true)
             if(edit){
-                await axios.post('/transactions/edit-transaction', { payload:{...values, userId: user._id }, transactionId:edit._id})
+                await axios.post('/api/v1/transactions/edit-transaction', { payload:{...values, userId: user._id }, transactionId:edit._id})
                 message.success("Transaction edited")
             }
             else{
-                await axios.post('/transactions/add-transaction', { ...values, userId: user._id })
+                await axios.post('/api/v1/transactions/add-transaction', { ...values, userId: user._id })
                 message.success("Transaction added")
             }
             setShowmodal(false)
@@ -104,7 +104,7 @@ const HomePage = () => {
     const deleteHandler = async (record) => {
         try {
             setLoading(true)
-            await axios.post('/transactions/delete-transaction',{transactionId:record._id})
+            await axios.post('/api/v1/transactions/delete-transaction',{transactionId:record._id})
             setLoading(false)
             message.success("Transaction deleted")
             setReload(!reload)

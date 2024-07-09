@@ -94,9 +94,9 @@ const Charts = ({ transactions }) => {
                             <h6>Total Credit Amount: {totalCreditAmount}</h6>
                             <h6>Total Debit Amount: {totalDebitAmount}</h6>
                             <div className='d-flex justify-content-center'>
-                                {dataType==='type' && datax.length>0 && <VictoryPie height={350} data={datax} labels={({ datum }) => `${datum.x}: ${datum.y}`} style={{ data: { fill: ({ datum }) => datum.fill } }} />}
-                                {dataType==='credit-categories' && creditDatax.length>0 && <VictoryPie height={350} data={creditDatax} labels={({ datum }) => `${datum.x}: ${datum.y}`} colorScale={["green", "orange", "gold", "cyan", "navy" ]}/>}
-                                {dataType==='debit-categories' && debitDatax.length>0 && <VictoryPie height={350} data={debitDatax} labels={({ datum }) => `${datum.x}: ${datum.y}`} colorScale={["red", "orange", "gold", "cyan", "navy" ]}/>}
+                                {dataType==='type' && datax.length>0 && <VictoryPie height={300} data={datax} labels={({ datum }) => `${datum.x}: ${datum.y}`} style={{ data: { fill: ({ datum }) => datum.fill } }} />}
+                                {dataType==='credit-categories' && creditDatax.length>0 && <VictoryPie height={300} data={creditDatax} labels={({ datum }) => `${datum.x}: ${datum.y}`} colorScale={["green", "orange", "gold", "cyan", "navy" ]}/>}
+                                {dataType==='debit-categories' && debitDatax.length>0 && <VictoryPie height={300} data={debitDatax} labels={({ datum }) => `${datum.x}: ${datum.y}`} colorScale={["red", "orange", "gold", "cyan", "navy" ]}/>}
                             </div>
                         </div>
                     </div>
