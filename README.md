@@ -11,4 +11,4 @@ This specific repository is the frontend part of the project. React.js and its a
 2. Add local proxy to package.json file and remove vercel link from the axios calls or keep it as is if you want to use online database
 3. Run "npm install" to install dependencies
 4. Run "npm start" to start the appication (make sure you have started your backend server if you are running backend locally)
-5. Open [http://localhost:3000] to view in your browser 
+5. Open [http://localhost:3000/] to view in your browser 
