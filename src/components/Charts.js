@@ -39,10 +39,10 @@ const Charts = ({ transactions }) => {
 
     return (
         <>
-            <div className='row '>
-                <div className='col-8'>
-                    <div className='row '>
-                        <div className='col-6 mt-1'>
+            <div className='row d-flex responsive-flex-charts'>
+                <div className='col'>
+                    <div className='row d-flex responsive-flex'>
+                        <div className='col mt-1'>
                             <div className='card'>
                                 <div className='card-header'>
                                     Total Transaction : {totalTransactions}
@@ -57,7 +57,7 @@ const Charts = ({ transactions }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className='col-6 mt-1'>
+                        <div className='col mt-1'>
                             <div className='card'>
                                 <div className='card-header'>
                                     Total Turnover : {totalTurnover}
@@ -74,7 +74,7 @@ const Charts = ({ transactions }) => {
                         </div>
                     </div>
                 </div>
-                <div className='col-4 mt-1'>
+                <div className='col-lg-4 mt-1'>
                     <div className='card'>
                         <div className='card-header'>
                             <ul className="nav nav-pills card-header-pills">

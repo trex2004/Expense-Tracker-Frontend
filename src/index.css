@@ -112,3 +112,20 @@
 .black-text{
   color: black;
 }
+
+
+@media screen and (max-width: 600px){
+  .responsive-flex{
+     flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 900px){
+  .responsive-flex-charts{
+     flex-direction: column;
+  }
+}
+
+.card{
+  min-width: 270px;
+}
