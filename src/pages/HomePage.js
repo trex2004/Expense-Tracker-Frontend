@@ -119,7 +119,7 @@ const HomePage = () => {
             {/* {loading && <Spinner />} */}
             <div className='d-flex mx-5 flex-column lato'>
                 <div className=' mt-2'>
-                    <div className='filters border mb-1 rounded-2'>
+                    <div className='filters border mb-1 rounded-2 d-flex responsive-flex gap-2'>
                         <div>
                             <h6>Select Frequency</h6>
                             <Select dropdownStyle={{ backgroundColor: '#D8EFD3' }} value={frequency} onChange={(values) => { setFrequency(values) }}>
