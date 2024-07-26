@@ -147,7 +147,7 @@ const HomePage = () => {
                         </div>
                     </div>
                     <div className='content'>
-                        {viewData === 'table' ? <Table  columns={collumns} dataSource={transactions} /> : <Charts transactions={transactions} />}
+                        {viewData === 'table' ? <Table  columns={collumns} dataSource={transactions} scroll={{ x: 400 }}/> : <Charts transactions={transactions} />}
                     </div>
                 </div>
             </div>
